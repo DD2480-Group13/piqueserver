@@ -45,9 +45,9 @@ class Team(object):
         self.kills = 0
         # Breaks test cases right now, removed for demonstration purposes.
         # Don't forget to put back in.
-        #if self.protocol.game_mode == CTF_MODE:
-        #    self.set_flag()
-        #    self.set_base()
+        if self.protocol.game_mode == CTF_MODE:
+            self.set_flag()
+            self.set_base()
 
     def set_flag(self):
         entity_id = [BLUE_FLAG, GREEN_FLAG][self.id]
