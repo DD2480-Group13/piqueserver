@@ -230,8 +230,8 @@ class ServerProtocol(BaseProtocol):
         self.map = map_obj
         self.world.map = map_obj
         self.on_map_change(map_obj)
-        self.team_1.initialize()
-        self.team_2.initialize()
+        self.team_1 = self.team_class(*self.team_1.get_init_values())
+        self.team_2 = self.team_class(*self.team_2.get_init_values())
         if self.game_mode == TC_MODE:
             self.reset_tc()
         self.players = MultikeyDict()
@@ -254,8 +254,8 @@ class ServerProtocol(BaseProtocol):
         player is the player which should be awarded the necessary captures to
         end the game
         """
-        self.team_1.initialize()
-        self.team_2.initialize()
+        self.team_1 = self.team_class(*self.team_1.get_init_values())
+        self.team_2 = self.team_class(*self.team_2.get_init_values())
         if self.game_mode == CTF_MODE:
             if player is None:
                 player = list(self.players.values())[0]
