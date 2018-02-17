@@ -15,12 +15,27 @@ class Team(object):
     name = None
     kills = None
 
-    def __init__(self, team_id, name, color, spectator, protocol):
-        self.id = team_id
-        self.name = name
-        self.protocol = protocol
-        self.color = color
-        self.spectator = spectator
+    def __init__(self, team_id, name, color, spectator, protocol, old_instance=None):
+        if old_instance is None:
+            self.id = team_id
+            self.name = name
+            self.protocol = protocol
+            self.color = color
+            self.spectator = spectator
+
+        else:
+            self.id = old_instance.id
+            self.name = old_instance.name
+            self.protocol = old_instance.protocol
+            self.color = old_instance.color
+            self.spectator = old_instance.spectator
+            if self.spectator:
+                return
+            self.score = 0
+            self.kills = 0
+            if self.protocol is not None and self.protocol.game_mode == CTF_MODE:
+                self.set_flag()
+                self.set_base()
 
     def get_players(self):
         for player in self.protocol.players.values():
