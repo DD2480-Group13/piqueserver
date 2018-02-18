@@ -80,6 +80,7 @@ class DummyPlayer():
         if winning:
             self.team = self.team(*self.team.get_init_values())
             self.team.other = self.team(*self.team.other.get_init_values())
+            self.team.other.other = self.team
             for entity in self.protocol.entities:
                 entity.update()
             for player in list(itervalues(self.protocol.players)):
