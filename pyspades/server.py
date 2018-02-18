@@ -232,6 +232,13 @@ class ServerProtocol(BaseProtocol):
         self.on_map_change(map_obj)
         self.team_1 = self.team_class(*self.team_1.get_init_values())
         self.team_2 = self.team_class(*self.team_2.get_init_values())
+        self.team_1.other = self.team_2
+        self.team_2.other = self.team_1
+        self.teams = {
+            -1: self.spectator_team,
+            0: self.team_1,
+            1: self.team_2
+        }
         if self.game_mode == TC_MODE:
             self.reset_tc()
         self.players = MultikeyDict()
@@ -256,6 +263,11 @@ class ServerProtocol(BaseProtocol):
         """
         self.team_1 = self.team_class(*self.team_1.get_init_values())
         self.team_2 = self.team_class(*self.team_2.get_init_values())
+        self.teams = {
+            -1: self.spectator_team,
+            0: self.team_1,
+            1: self.team_2
+        }
         if self.game_mode == CTF_MODE:
             if player is None:
                 player = list(self.players.values())[0]

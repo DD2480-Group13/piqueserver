@@ -22,7 +22,11 @@ class Team(object):
         self.color = color
         self.spectator = spectator
         self.other = other
-        self.initialize()
+        if self.should_init():
+            self.initialize()
+
+    def should_init(self):
+        return self.protocol.map_info and self.other
 
     def get_init_values(self):
         return self.id, self.name, self.color, self.spectator, self.protocol, self.other
@@ -42,7 +46,7 @@ class Team(object):
     def initialize(self):
         if self.spectator:
             return
-        self.score = 0
+        self.score = 8
         self.kills = 0
         # Breaks test cases right now, removed for demonstration purposes.
         # Don't forget to put back in.
