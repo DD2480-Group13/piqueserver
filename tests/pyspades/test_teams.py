@@ -17,14 +17,12 @@ class TestTeams(unittest.TestCase):
     color = (255, 0, 255)
 
     def test_initial_values(self):
-        other_team = Team(1, self.name, self.color, False, MockServerProtocol())
-        team = Team(0, self.name, self.color, False, MockServerProtocol(), other_team)
+        team = Team(0, self.name, self.color, False, MockServerProtocol())
         self.assertEquals(0, team.kills)
         self.assertEquals(0, team.score)
 
     def test_team_from_team(self):
-        other_team = Team(1, self.name, self.color, False, MockServerProtocol())
-        team_template = Team(0, self.name, self.color, False, MockServerProtocol(), other_team)
+        team_template = Team(0, self.name, self.color, False, MockServerProtocol())
         team_template.kills = 9
         team_template.score = 5
         team = Team(*team_template.get_init_values())

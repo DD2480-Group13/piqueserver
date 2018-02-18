@@ -15,13 +15,12 @@ class Team(object):
     name = None
     kills = None
 
-    def __init__(self, team_id, name, color, spectator, protocol, other=None):
+    def __init__(self, team_id, name, color, spectator, protocol):
         self.id = team_id
         self.name = name
         self.protocol = protocol
         self.color = color
         self.spectator = spectator
-        self.other = other
         if self.should_init():
             self.initialize()
 
