@@ -31,6 +31,14 @@ class TestTeams(unittest.TestCase):
         self.assertEquals(team_template.name, team.name)
         self.assertEquals(team_template.color, team.color)
 
+    def test_team_others(self):
+        team_1 = Team(0, "team_1", (255, 0, 255), False, MockServerProtocol())
+        team_2 = Team(1, "team_2", (127, 127, 127), False, MockServerProtocol())
+        team_1.other = team_2
+        team_2.other = team_1
+        team_1 = Team(*team_1.get_init_values())
+        self.assertEquals(team_2, team_1.other)
+
 
 # Below is dummy classes used to mock the actual ServerProtocol
 class MockServerProtocol:
