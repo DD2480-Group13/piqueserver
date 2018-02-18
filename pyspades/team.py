@@ -46,7 +46,7 @@ class Team(object):
     def initialize(self):
         if self.spectator:
             return
-        self.score = 8
+        self.score = 0
         self.kills = 0
         # Breaks test cases right now, removed for demonstration purposes.
         # Don't forget to put back in.
