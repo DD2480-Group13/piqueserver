@@ -26,10 +26,10 @@ class Team(object):
             self.initialize()
 
     def should_init(self):
-        return self.protocol.map_info and self.other
+        return self.protocol.map_info is not None
 
     def get_init_values(self):
-        return self.id, self.name, self.color, self.spectator, self.protocol, self.other
+        return self.id, self.name, self.color, self.spectator, self.protocol
 
     def get_players(self):
         for player in self.protocol.players.values():
