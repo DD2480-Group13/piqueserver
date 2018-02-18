@@ -48,8 +48,6 @@ class Team(object):
             return
         self.score = 0
         self.kills = 0
-        # Breaks test cases right now, removed for demonstration purposes.
-        # Don't forget to put back in.
         if self.protocol.game_mode == CTF_MODE:
             self.set_flag()
             self.set_base()

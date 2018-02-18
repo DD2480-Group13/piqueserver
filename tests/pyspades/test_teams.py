@@ -17,12 +17,14 @@ class TestTeams(unittest.TestCase):
     color = (255, 0, 255)
 
     def test_initial_values(self):
-        team = Team(0, self.name, self.color, False, MockServerProtocol())
+        other_team = Team(1, self.name, self.color, False, MockServerProtocol())
+        team = Team(0, self.name, self.color, False, MockServerProtocol(), other_team)
         self.assertEquals(0, team.kills)
         self.assertEquals(0, team.score)
 
     def test_team_from_team(self):
-        team_template = Team(0, self.name, self.color, False, MockServerProtocol())
+        other_team = Team(1, self.name, self.color, False, MockServerProtocol())
+        team_template = Team(0, self.name, self.color, False, MockServerProtocol(), other_team)
         team_template.kills = 9
         team_template.score = 5
         team = Team(*team_template.get_init_values())
@@ -45,10 +47,12 @@ class TestTeams(unittest.TestCase):
 class MockServerProtocol:
     game_mode = None
     entities = None
+    map_info = None
 
     def __init__(self):
         self.game_mode = CTF_MODE
         self.entities = []
+        self.map_info = True
 
     def get_random_location(self, a, b):
         return 0, 0, 0
