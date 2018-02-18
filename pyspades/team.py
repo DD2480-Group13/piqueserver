@@ -15,16 +15,17 @@ class Team(object):
     name = None
     kills = None
 
-    def __init__(self, team_id, name, color, spectator, protocol):
+    def __init__(self, team_id, name, color, spectator, protocol, other=None):
         self.id = team_id
         self.name = name
         self.protocol = protocol
         self.color = color
         self.spectator = spectator
+        self.other = other
         self.initialize()
 
     def get_init_values(self):
-        return self.id, self.name, self.color, self.spectator, self.protocol
+        return self.id, self.name, self.color, self.spectator, self.protocol, self.other
 
     def get_players(self):
         for player in self.protocol.players.values():
