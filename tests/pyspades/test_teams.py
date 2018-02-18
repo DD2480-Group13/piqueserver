@@ -37,6 +37,7 @@ class TestTeams(unittest.TestCase):
         team_1.other = team_2
         team_2.other = team_1
         team_1 = Team(*team_1.get_init_values())
+        team_2.other = Team(*team_1.other.get_init_values())
         self.assertEquals(team_2, team_1.other)
 
 
