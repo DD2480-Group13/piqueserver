@@ -1,3 +1,13 @@
+Report:
+
+https://docs.google.com/document/d/1qTW-mjOnhJ3-R_6riB_1sUDna1cKf4MjGjzGgeK9zcE/edit
+
+Pull requests:
+
+https://github.com/piqueserver/piqueserver/pull/296
+
+https://github.com/piqueserver/piqueserver/pull/298
+
 piqueserver |Build Status| |Build status| |Coverage Status|
 ===========================================================
 
