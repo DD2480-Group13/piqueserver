@@ -12,8 +12,6 @@ class TestMovement(unittest.TestCase):
         connection.set_location.assert_called_once_with((10, 11, 12))
         connection.protocol.send_chat.assert_not_called()
 
-    # In movement.py, "position = args[0].upper()" should be "position = args[initial_index].upper()"
-    @unittest.expectedFailure
     def test_move_sector(self):
         connection = self.get_mock_connection()
 
